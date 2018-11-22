@@ -1,6 +1,6 @@
 FROM polinux/centos-supervisor
 
-ENV GITLAB_CE_RUNNER_VERSION=11.4.2 \
+ENV GITLAB_CE_RUNNER_VERSION=11.5.0 \
     RUNNER_NAME=name \
     RUNNER_URL='http://my-gitlab.com' \
     RUNNER_REGISTRATION_TOKEN=token \
