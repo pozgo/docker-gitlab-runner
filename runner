@@ -1,0 +1,59 @@
+#!/bin/bash
+set -eu
+# Bash Colors
+white=$(tput setaf 7)
+bold=$(tput bold)
+reset=$(tput sgr0)
+### Logging Functions
+#### Mesages
+msg() {
+    if [[ "${@}" ]]; then echo "${bold}${white}${@}${reset}"; else echo; fi
+}
+
+SELECTOR=$1
+# ENVS
+URL=$(cat docker-compose.yml | grep RUNNER_URL | awk -F '\"' '{print $2}')
+TOKEN=$(docker logs runner 2>&1 | grep GLTOKEN | sed 's/GLTOKEN://g')
+
+start_runner() {
+    msg "Starting Runner ..."
+    docker-compose up -d
+    msg "Runner started."
+}
+
+stop_runner() {
+    msg "Stopping Runner"
+    docker-compose stop
+}
+
+unregister() {
+    msg "Unregistering runner with Token: ${TOKEN}"
+    docker exec -ti runner gitlab-runner unregister -u ${URL} -t ${TOKEN}
+    msg "Runner Unregistered"
+}
+
+logme() {
+    msg "Following Log of runner..."
+    docker-compose logs -f 
+}
+
+remove_runner() {
+    echo "Removing runner"
+    docker-compose rm -f
+}
+
+if [ $SELECTOR == "start" ]; then
+    start_runner
+    logme
+    elif [ $SELECTOR == "delete" ]; then
+    unregister
+    stop_runner
+    remove_runner
+    elif [ -z $SELECTOR ]; then
+    msg "No option specifie"
+    msg "Use start or delete"
+else
+    msg "Wrong selector: ${SELECTOR}"
+    msg "Use start or delete"
+    exit 0
+fi
