@@ -5,7 +5,8 @@ ENV GITLAB_CE_RUNNER_VERSION=11.4.2 \
     RUNNER_URL='http://my-gitlab.com' \
     RUNNER_REGISTRATION_TOKEN=token \
     RUNNER_EXECUTOR=shell \
-    RUNNER_EXTRA_PARAMS=''
+    RUNNER_EXTRA_PARAMS='' \
+    CI_TEST_MODE='false'
 
 RUN \
   rpm --rebuilddb && yum clean all && yum update -y && \
