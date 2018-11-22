@@ -1,6 +1,6 @@
 # GitLab Runner in docker (CentOS 7)
 
-[![Build Status](https://travis-ci.org/pozgo/docker-gitlab-runner.svg?branch=master)](https://travis-ci.org/pozgo/docker-gitlab-runner)
+[![Build Status](https://travis-ci.com/pozgo/docker-gitlab-runner.svg?branch=master)](https://travis-ci.com/pozgo/docker-gitlab-runner)
 [![GitHub Open Issues](https://img.shields.io/github/issues/pozgo/docker-gitlab-runner.svg)](https://github.com/pozgo/docker-gitlab-runner/issues)  
 [![Stars](https://img.shields.io/github/stars/pozgo/docker-gitlab-runner.svg?style=social&label=Stars)]()
 [![Fork](https://img.shields.io/github/forks/pozgo/docker-gitlab-runner.svg?style=social&label=Fork)]()  
