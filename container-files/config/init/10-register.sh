@@ -13,6 +13,11 @@ log() {
 }
 
 # Functions
+export_token() {
+  GLTOKEN=`cat /etc/gitlab-runner/config.toml | grep token | awk -F '\"' '{print $2}'`
+  export TOKEN=${GLTOKEN}
+  echo "GLTOKEN: ${GLTOKEN}"
+}
 start_runner() {
   if [[ ! -f /config/registered ]]; then 
     if [[ -z ${USER_PARAMS} ]]; then
