@@ -8,8 +8,7 @@ RUN_CMD="gitlab-runner register --non-interactive ${USER_PARAMS}"
 
 # Logger
 log() {
-  if [[ "$@" ]]; then echo "[`date +'%Y-%m-%d %T'`] $@";
-  else echo; fi
+  if [[ "$@" ]]; then echo "[`date +'%Y-%m-%d %T'`] $@"; else echo; fi
 }
 
 # Functions
@@ -20,23 +19,19 @@ export_token() {
 }
 start_runner() {
   if [[ ! -f /config/registered ]]; then 
-    if [[ -z ${USER_PARAMS} ]]; then
-      log "No registration provided. Runner Quitting"
+    if [[ ${CI_TEST_MODE} == 'true' ]]; then
+      log "Running in CI TEST MODE."
+      log "gitlab-runner version:"
+      gitlab-runner --version
       exit 1
     else
       log "Registering runner."
-      log $RUN_CMD
       bash -c "${RUN_CMD}"
       mkdir -p /etc/supervisor.d
       cp -f /config/gitlab-runner.conf /etc/supervisor.d/gitlab-runner.conf
+      export_token
     fi
   fi
 }
-export_token() {
-  GLTOKEN=`cat /etc/gitlab-runner/config.toml | grep token | awk -F '\"' '{print $2}'`
-  export TOKEN=${GLTOKEN}
-  echo "GLTOKEN: ${GLTOKEN}"
-}
 
 start_runner
-export_token
