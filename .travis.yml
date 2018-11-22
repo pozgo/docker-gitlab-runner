@@ -4,11 +4,11 @@ jobs:
   include:
   - stage: build&test
     script:
-    - RELEASE=$(grep "GITLAB_CE_RUNNER_VERSION=" Dockerfile | sed 's|^.*=||g' |awk '{print
-      $1}'); docker build -t polinux/gitlab-runner:$RELEASE .
+    - RELEASE=$(grep "GITLAB_CE_RUNNER_VERSION=" Dockerfile | sed 's|^.*=||g' |awk
+      '{print $1}'); docker build -t polinux/gitlab-runner:$RELEASE .
     - docker build -t polinux/gitlab-runner:latest .
-    - RELEASE=$(grep "GITLAB_CE_RUNNER_VERSION=" Dockerfile | sed 's|^.*=||g' |awk '{print
-      $1}'); docker run -d --name gitlab-runner -e "CI_TEST_MODE=true" polinux/gitlab-runner:$RELEASE
+    - RELEASE=$(grep "GITLAB_CE_RUNNER_VERSION=" Dockerfile | sed 's|^.*=||g' |awk
+      '{print $1}'); docker run -d --name gitlab-runner -e "CI_TEST_MODE=true" polinux/gitlab-runner:$RELEASE
     - while true; do if docker logs gitlab-runner | grep "${RELEASE}"; then break;
       else sleep 3; fi done
     - docker login -u $DOCKER_USER -p $DOCKER_PASS
@@ -20,11 +20,13 @@ jobs:
     - docker login -u $DOCKER_USER -p $DOCKER_PASS
     - docker pull polinux/gitlab-runner:stage
     - docker tag polinux/gitlab-runner:stage polinux/gitlab-runner:latest
-    - export RELEASE=$(grep "GITLAB_CE_RUNNER_VERSION=" Dockerfile | sed 's|^.*=||g' |awk '{print $1}'); docker tag polinux/gitlab-runner:stage polinux/gitlab-runner:$RELEASE
+    - export RELEASE=$(grep "GITLAB_CE_RUNNER_VERSION=" Dockerfile | sed 's|^.*=||g'
+      |awk '{print $1}'); docker tag polinux/gitlab-runner:stage polinux/gitlab-runner:$RELEASE
     - docker push polinux/gitlab-runner:latest
-    - export RELEASE=$(grep "GITLAB_CE_RUNNER_VERSION=" Dockerfile | sed 's|^.*=||g' |awk '{print $1}'); docker push polinux/gitlab-runner:$RELEASE
+    - export RELEASE=$(grep "GITLAB_CE_RUNNER_VERSION=" Dockerfile | sed 's|^.*=||g'
+      |awk '{print $1}'); docker push polinux/gitlab-runner:$RELEASE
     - docker push polinux/gitlab-runner:latest
 notifications:
   slack:
     rooms:
-      secure: BOe5w3OmzSDLapZBWSF/TZJq/PLIRJ4yaN/Z2jYPdcpknMrQ46RLp/ftvJRhFN/iEHpR8PyfdgEcBJiNkldS64btU4QAu3dMyOtedaTse2VqeHgiiIPzWEZifEZBeUQ2WLtmjNOsuDF3pwahPUA4R5Sfvm2oRH56fCd600KOpRJXobW5U+HN1KlNm2KQ4/rzIMJN1erLTLcMaWJUaDdZjIiyynJXlUUbVfSttFmImfgTRCa+eQbzm0GuJIiAitOLm2o+hyNfiExMm0ueRMn3ViVMvEXm17uIk5fTatfnImp2qopomWJ58o7zVfDBhPsV5558nIzSud0PO+ND5PqNuNXbljtlJ5faJ3qM+AMSk672D+vSrKJCk9glQU4PBwgtMyUTnK2gkKbVxG6YGNkR+TqYvriUKmbro0BqyDpUQ2J8GXShtacIHi2d56pORcOW08X6FMxOV3pzoBo2oJHsl1m9VbqHxiKmeZ9Um1CTwSzyqrq/uoAssPg35+zaFU61wgM0w46iRYsLcMKLwOyGP8jL1uGo1NwcFgrRXXzEGD1yQrU1CUa950wzi2OnofzE3i8KVn7QyhBZSwREZSWi6qcktBn65yaSHR9l5BONN4lqYYKngV9tcgg8yH6wJjlaDL6UJUvxAOv6kboPfrCGVoP5IJNAMYZNJlf73d8ihEc=
+      secure: mtcnc3lTA+0fmzTZNHCGUNF7Gp5eZk21m+ExPFhlOulmHGRZDkxhQZ3hL+3q0WsW+FCTSn0mh5icqNPGVI6BCH9hjamKg6VVK9uumRqQiLtuUXdcbO2Mb+HJ38OOxYaK2kcP/K3vyZb4ncg13GPZjSwG1qNbDZBJPDNPMLMfLCob5iL67MzqnBI5+c33Av6J6l3fNHKkjR9s68VpyOhPZzNBlhnWUlHueH7mwiRIAo3oA3xqL7jGfyrOSXwinTg8x2YfsfBMqUGKkzTv6iZkWWAmNHubYndoqcfg53PDDyDaJEUUmbxTfbBhgoqW1b/3/DlZlHBnsDh3jnk6Lr9U0SV0LYBz6R3N82wffzz2VrFB/T4BCNy7EC4bXn9HCQMlhxhAh4vJLRjpO2loJ3KTNnjwCl5tNPb1JrHhnljju81xdaDmcpZBNtZPtlcz3E5K0bz2FRosYZhC9ZGWGQ0Ar5EIfgpa3JJWxZaJi8LxKjU/cZaefqFmibVx5i7XqPrkZLv21SFwCP8MAZvHCc/2hP6mUUwtbpL0z/vM5UDi17+l2MmayEYSduRwWZsdwjjX8hCIakgq0pHtKAO4xVcnsyV64nSkA33fecnhpDkZTScPfnhRFlx5ZiuGwAKhJ7vOMvqridB/CaZJ1oXLn6XrjoPhQeU2yMinGL7IJbWPkic=
