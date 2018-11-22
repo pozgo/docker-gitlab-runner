@@ -1,0 +1,15 @@
+version: '2'
+
+services:
+  runner:
+    container_name: runner
+    image: polinux/gitlab-runner:latest
+    hostname: runner
+    privileged: true
+    network_mode: "host"
+    environment:
+      RUNNER_NAME: "runner"
+      RUNNER_URL: "https://my-gitlab.com/"
+      RUNNER_REGISTRATION_TOKEN: "token"
+      RUNNER_EXECUTOR: "shell"
+      RUNNER_MULTI_PARAMS: "--tag-list=\"build, test, deploy\""
