@@ -4,7 +4,7 @@
 [![GitHub Open Issues](https://img.shields.io/github/issues/pozgo/docker-gitlab-runner.svg)](https://github.com/pozgo/docker-gitlab-runner/issues)  
 [![Stars](https://img.shields.io/github/stars/pozgo/docker-gitlab-runner.svg?style=social&label=Stars)]()
 [![Fork](https://img.shields.io/github/forks/pozgo/docker-gitlab-runner.svg?style=social&label=Fork)]()  
-[![](https://img.shields.io/github/release/pozgo/docker-gitlab-runner.svg)](http://microbadger.com/images/polinux/gitlab-runner)  
+[![](https://img.shields.io/github/release/pozgo/docker-gitlab-runner.svg)](https://github.com/pozgo/docker-gitlab-runner/releases)  
 [![Docker build](http://dockeri.co/image/polinux/gitlab-runner)](https://hub.docker.com/r/polinux/gitlab-runner/)
 
 Felling like supporting me in my projects use donate button. Thank You!  
