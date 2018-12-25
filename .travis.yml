@@ -11,6 +11,7 @@ jobs:
       '{print $1}'); docker run -d --name gitlab-runner -e "CI_TEST_MODE=true" polinux/gitlab-runner:$RELEASE
     - while true; do if docker logs gitlab-runner | grep "${RELEASE}"; then break;
       else sleep 3; fi done
+    - docker logs gitlab-runner | grep "pip 18.1"
     - docker login -u $DOCKER_USER -p $DOCKER_PASS
     - docker tag polinux/gitlab-runner:latest polinux/gitlab-runner:stage
     - docker push polinux/gitlab-runner:stage
