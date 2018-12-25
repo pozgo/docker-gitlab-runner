@@ -23,6 +23,7 @@ start_runner() {
       log "Running in CI TEST MODE."
       log "gitlab-runner version:"
       gitlab-runner --version
+      pip --version
       exit 1
     else
       log "Registering runner."

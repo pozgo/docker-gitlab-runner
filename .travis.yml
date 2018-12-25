@@ -9,10 +9,9 @@ jobs:
     - docker build -t polinux/gitlab-runner:latest .
     - RELEASE=$(grep "GITLAB_CE_RUNNER_VERSION=" Dockerfile | sed 's|^.*=||g' |awk
       '{print $1}'); docker run -d --name gitlab-runner -e "CI_TEST_MODE=true" polinux/gitlab-runner:$RELEASE
-      # Test pip avi_api_version
-    - docker exec -i gitlab-runner bash -c "pip --version"
     - while true; do if docker logs gitlab-runner | grep "${RELEASE}"; then break;
       else sleep 3; fi done
+    - docker logs gitlab-runner | grep "pip 18.0"
     - docker login -u $DOCKER_USER -p $DOCKER_PASS
     - docker tag polinux/gitlab-runner:latest polinux/gitlab-runner:stage
     - docker push polinux/gitlab-runner:stage
