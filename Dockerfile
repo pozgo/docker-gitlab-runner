@@ -17,6 +17,7 @@ RUN \
   wget -O /bin/gitlab-runner https://gitlab-runner-downloads.s3.amazonaws.com/v${GITLAB_CE_RUNNER_VERSION}/binaries/gitlab-runner-linux-amd64 && \
   chmod +x /bin/gitlab-runner && \
   useradd --comment 'GitLab Runner' --create-home gitlab-runner --shell /bin/bash && \
-  yum clean all && rm -rf /var/cache/yum
+  yum clean all && rm -rf /var/cache/yum && 
+  easy_install pip &&
 
 COPY container-files /
