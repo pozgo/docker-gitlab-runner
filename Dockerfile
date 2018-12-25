@@ -18,6 +18,7 @@ RUN \
   chmod +x /bin/gitlab-runner && \
   useradd --comment 'GitLab Runner' --create-home gitlab-runner --shell /bin/bash && \
   yum clean all && rm -rf /var/cache/yum && \
-  easy_install pip
+  easy_install pip && \
+  echo "gitlab-runner  ALL=(ALL)    NOPASSWD: ALL" >> /etc/sudoers
 
 COPY container-files /
