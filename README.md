@@ -1,7 +1,8 @@
 # GitLab Runner in docker (CentOS 7)
 
 [![Build Status](https://travis-ci.com/pozgo/docker-gitlab-runner.svg?branch=master)](https://travis-ci.com/pozgo/docker-gitlab-runner)
-[![GitHub Open Issues](https://img.shields.io/github/issues/pozgo/docker-gitlab-runner.svg)](https://github.com/pozgo/docker-gitlab-runner/issues)  
+[![GitHub Open Issues](https://img.shields.io/github/issues/pozgo/docker-gitlab-runner.svg)](https://github.com/pozgo/docker-gitlab-runner/issues) [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fpozgo%2Fdocker-gitlab-runner.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fpozgo%2Fdocker-gitlab-runner?ref=badge_shield)
+ 
 [![Stars](https://img.shields.io/github/stars/pozgo/docker-gitlab-runner.svg?style=social&label=Stars)]()
 [![Fork](https://img.shields.io/github/forks/pozgo/docker-gitlab-runner.svg?style=social&label=Fork)]()  
 [![](https://img.shields.io/github/release/pozgo/docker-gitlab-runner.svg)](https://github.com/pozgo/docker-gitlab-runner/releases)  
@@ -144,3 +145,6 @@ Przemyslaw Ozgo (<linux@ozgo.info>)
 
 ### Acknowledgements
 I would like to thank [JetBrains](https://www.jetbrains.com/) for supporting me with Open Source endeavours.
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fpozgo%2Fdocker-gitlab-runner.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fpozgo%2Fdocker-gitlab-runner?ref=badge_large)
